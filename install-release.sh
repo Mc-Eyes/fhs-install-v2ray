@@ -60,6 +60,8 @@ check_if_running_as_root() {
 }
 
 identify_the_operating_system_and_architecture() {
+  echo "uname -m :{$(uname -m}."
+  
   if [[ "$(uname)" == 'Linux' ]]; then
     case "$(uname -m)" in
       'i386' | 'i686')
@@ -223,6 +225,8 @@ get_current_version() {
     VERSION="$(/usr/local/bin/v2ray version | awk 'NR==1 {print $2}')"
   fi
   CURRENT_VERSION="v${VERSION#v}"
+  
+  echo "CURRENT_VERSION :v${VERSION#v}."
 }
 
 get_version() {
